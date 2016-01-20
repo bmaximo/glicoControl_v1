@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<ui:composition template="/template/template.xhtml">
+<ui:define name="conteudo">
+	<div class="nome">
+		<h:outputLabel  value="Olá, " />
+		<h:outputLabel  value="#{usuarioBean.usuario.nome}.  " />
+		<p:commandLink id="sair" action="#{usuarioBean.sair}">Sair</p:commandLink>
+	</div>
+<br />
+	<div class="titulo">
+		<h:graphicImage value="/images/relatorio.png" width="100%" height="100%"/>
+	</div>
+	<br />
+	<br />
+	<h:form id="relatorio">
+		<div class="campo">
+			<h:outputText value="Data de Inicio: " /><br />
+			<p:calendar id="dataInicio" value="#{usuarioBean.dataInicio}" pattern="dd/MM/yyyy"/>
+		</div>
+		<div class="campo">
+			<h:outputText value="Data de Fim: " /><br />
+			<p:calendar id="dataFim" value="#{usuarioBean.dataFim}" pattern="dd/MM/yyyy"/>
+		</div>
+		<div class="botao">
+			<p:commandButton value="Gerar" action="#{usuarioBean.geraRelatorio}" update="relatorio, indices"/>
+		</div>
+		<p:dataTable id="indices" var="e" emptyMessage="Nenhum indice cadastrado."
+						value="#{usuarioBean.indices}" reflow="true" >
+				<p:column style="text-align:center">
+					<f:facet name="header">Data</f:facet>
+					<h:inputHidden value="#{e.dataHora}" />
+				</p:column>
+				<p:column style="text-align:center">
+					<f:facet name="header">Status</f:facet>
+					<h:inputHidden value="#{e.status}" />
+				</p:column>
+				<p:column style="text-align:center">
+					<f:facet name="header">Indice Antes</f:facet>
+					<h:inputHidden value="#{e.indiceAntes}" />
+				</p:column>
+				<p:column style="text-align:center">
+					<f:facet name="header">Indice Depois</f:facet>
+					<h:inputHidden value="#{e.indiceDepois}" />
+				</p:column>
+				<p:column style="text-align:center">
+					<f:facet name="header">Observações</f:facet>
+					<h:inputHidden value="#{e.observacao}" />
+				</p:column>
+			</p:dataTable>
+	</h:form>
+
+</ui:define>
+</ui:composition>
+</html>

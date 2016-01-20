@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head>
+<style type="text/css">  
+    @import url(#{facesContext.externalContext.request.contextPath}/css/style.css)
+</style>
+<style type="text/css">  
+    @import url(#{facesContext.externalContext.request.contextPath}/css/theme.css)
+</style>
+</h:head> 
+<h:body styleClass="body"> 
+	
+		<div class="topo">
+			<div class="nome">
+				<a href="../PI/index.xhtml">BR</a>
+				<h:outputLabel value=" | "/>
+				<a href="../PI/index_en.xhtml">EN</a>
+			</div>
+			<div class="logo">
+				<h:graphicImage value="/images/logo.png" width="100%" height="100%"/>
+			</div>
+		</div>
+			<p:tabMenu activeIndex="#{param.i}">
+			    <p:menuitem value="Inicio" outcome="/index.xhtml" icon="ui-icon-home">
+			        <f:param name="i" value="0" />
+			    </p:menuitem>
+			    <p:menuitem value="Diabetes, e agora?" outcome="/diabetes.xhtml" icon="ui-icon-search">
+			        <f:param name="i" value="1" />
+			    </p:menuitem>
+			    <p:menuitem value="Sobre" outcome="/sobre.xhtml" icon="ui-icon-document">
+			        <f:param name="i" value="2" />
+			    </p:menuitem>
+		</p:tabMenu>
+		
+		<div class="conteudo">
+			<ui:insert name="conteudo"></ui:insert>
+		</div>
+		<div class="rodape">
+		<br/>
+		<h5 style="color: #666666">© 2015, Bárbara &amp; Leticia. All Rights Reserved</h5>
+			
+		</div>
+	
+</h:body> 
+</html>

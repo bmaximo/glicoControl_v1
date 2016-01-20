@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<ui:composition template="/template/template_en.xhtml">
+	<ui:define name="conteudo"> 
+		<div class="banner">
+			<h:graphicImage value="/images/banner.png" width="100%" height="100%"/>
+		</div>
+		<div class="ui-grid ui-grid-responsive">
+		    <div class="ui-grid-row">
+		        <div class="ui-grid-col-4">
+		        	<div class="quadrado">
+		        		<a href="../PI/diabetesdiferenca.xhtml">
+		        		<h:graphicImage value="/images/diabetes_en.png" width="100%" height="100%"/>
+		        		</a>
+		        	</div>
+		        </div>
+		        <div class="ui-grid-col-4">
+		        	<div class="quadrado">
+		        		<a href="../PI/cadastro.xhtml">
+		        		<h:graphicImage value="/images/cadastrar_en.png" width="100%" height="100%"/>
+		        		</a>
+		        	</div>
+		        </div>
+		        <div class="ui-grid-col-4">
+		        	<div class="quadrado">
+		        		<h:form id="login">
+			        	<br />
+		        		<h:graphicImage value="/images/login.png" />
+			        	<br />
+			        	<br />
+			        	<div class="campo">
+			        	<h:outputText value="Email: "/><br />
+						<p:inputText id="email" value="#{usuarioBean.usuario.email}" required="true" />               
+				        </div>
+				        <div class="campo">
+				        <h:outputLabel  value="Password:" /><br />
+				        <p:password id="senha" value="#{usuarioBean.usuario.senha}" label="Senha" required="true" />
+				        <br />
+				        </div>
+				        <div class="botao">
+				        <p:commandButton value="Login" action="#{usuarioBean.verificarLogin}" />
+			        	</div>
+			        	</h:form>
+		        	</div>
+		        </div>
+		    </div>
+		</div>
+		<br />
+		<br />
+	</ui:define>
+</ui:composition> 
+</html>
